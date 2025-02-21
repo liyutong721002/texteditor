@@ -4,6 +4,7 @@ package edu.grinnell.csc207.texteditor;
  * A gap buffer-based implementation of a text buffer.
  */
 public class GapBuffer {
+
     public void insert(char ch) {
         throw new UnsupportedOperationException("Unimplemented method 'delete'");
     }
