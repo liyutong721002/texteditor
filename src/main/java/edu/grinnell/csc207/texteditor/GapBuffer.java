@@ -5,35 +5,92 @@ package edu.grinnell.csc207.texteditor;
  */
 public class GapBuffer {
 
+    private int gapStart;
+    private int gapEnd;
+    private char[] buffer;
+
+    public GapBuffer() {
+        buffer = new char[10];
+        gapStart = 0;
+        gapEnd = 3;
+    }
+
+    public void expand() {
+        char[] temp = new char[buffer.length * 2];
+        System.arraycopy(buffer, 0, temp, 0, gapStart);
+        System.arraycopy(buffer, gapEnd, temp, temp.length - buffer.length + gapEnd, buffer.length - gapEnd);
+        gapEnd = temp.length - buffer.length + gapEnd;
+        buffer = temp;
+    }
+
     public void insert(char ch) {
-        throw new UnsupportedOperationException("Unimplemented method 'delete'");
+        if (gapStart == gapEnd) {
+            expand();
+        }
+        buffer[gapStart] = ch;
+        gapStart++;
+
     }
 
     public void delete() {
-        throw new UnsupportedOperationException("Unimplemented method 'delete'");
+        if (gapStart > 0) {
+            gapStart--;
+            buffer[gapStart] = '\0';
+        }
     }
 
     public int getCursorPosition() {
-        throw new UnsupportedOperationException("Unimplemented method 'getCursorPosition'");
+        return gapStart;
     }
 
     public void moveLeft() {
-        throw new UnsupportedOperationException("Unimplemented method 'moveLeft'");
+        if (gapStart > 0) {
+            gapStart--;
+            gapEnd--;
+            buffer[gapEnd] = buffer[gapStart];
+            buffer[gapStart] = '\0';
+        }
     }
 
     public void moveRight() {
-        throw new UnsupportedOperationException("Unimplemented method 'moveRight'");
+        if (gapEnd < buffer.length) {
+            buffer[gapStart] = buffer[gapEnd];
+            gapStart++;
+            buffer[gapEnd] = '\0';
+            gapEnd++;
+        }
     }
 
     public int getSize() {
-        throw new UnsupportedOperationException("Unimplemented method 'getSize'");
+        int size = 0;
+        for (int i = 0; i < buffer.length; i++) {
+            if (buffer[i] != '\0') {
+                size++;
+            }
+        }
+        return size;
     }
 
     public char getChar(int i) {
-        throw new UnsupportedOperationException("Unimplemented method 'getChar'");
+        char ch;
+        if (i < 0 || i >= getSize()) {
+            throw new IndexOutOfBoundsException("Index " + i + " is invalid.");
+        }
+        if (i < gapStart) {
+            ch = buffer[i];
+        } else {
+            ch = buffer[i + gapStart - gapEnd];
+        }
+        return ch;
     }
 
     public String toString() {
-        throw new UnsupportedOperationException("Unimplemented method 'toString'");
+        String result = "";
+        for (int i = 0; i < buffer.length; i++) {
+            if (buffer[i] != '\0') {
+                result += buffer[i];
+            }
+        }
+        return result;
     }
 }
