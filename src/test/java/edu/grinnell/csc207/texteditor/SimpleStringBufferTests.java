@@ -1,7 +1,5 @@
 package edu.grinnell.csc207.texteditor;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import org.junit.jupiter.api.Test;
 
 import net.jqwik.api.ForAll;
@@ -100,9 +98,11 @@ public class SimpleStringBufferTests {
     public void GetCharAtInvalidIndex() {
         SimpleStringBuffer buffer = new SimpleStringBuffer();
         buffer.insert('x');
-        assertThrows(IndexOutOfBoundsException.class, () -> {buffer.getChar(5);});
+        assertThrows(IndexOutOfBoundsException.class, () -> {
+            buffer.getChar(5);
+        });
     }
-    
+
     @Property
     public boolean CursorPosition(@ForAll @IntRange(min = 2, max = 1000) int sz) {
         SimpleStringBuffer buffer = new SimpleStringBuffer();

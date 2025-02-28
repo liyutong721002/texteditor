@@ -12,7 +12,6 @@ public class GapBufferTests {
     /**
      * TODO: fill me in with unit and property tests!
      */
-
     @Test
     public void InsertSize() {
         GapBuffer buffer = new GapBuffer();
@@ -110,9 +109,11 @@ public class GapBufferTests {
     public void GetCharAtInvalidIndex() {
         GapBuffer buffer = new GapBuffer();
         buffer.insert('x');
-        assertThrows(IndexOutOfBoundsException.class, () -> {buffer.getChar(5);});
+        assertThrows(IndexOutOfBoundsException.class, () -> {
+            buffer.getChar(5);
+        });
     }
-    
+
     @Property
     public boolean CursorPosition(@ForAll @IntRange(min = 2, max = 1000) int sz) {
         GapBuffer buffer = new GapBuffer();
