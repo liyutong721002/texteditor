@@ -71,7 +71,7 @@ public class GapBuffer {
     public void moveLeft() {
         if (gapStart > 0) {
             gapStart--;
-            buffer[gapEnd]=buffer[gapStart];
+            buffer[gapEnd] = buffer[gapStart];
             gapEnd--;
             buffer[gapStart] = '\0';
         }
@@ -118,7 +118,7 @@ public class GapBuffer {
         if (i < gapStart) {
             ch = buffer[i];
         } else {
-            ch = buffer[i + gapStart - gapEnd];
+            ch = buffer[i + gapEnd - gapStart];
         }
         return ch;
     }

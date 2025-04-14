@@ -6,7 +6,7 @@ package edu.grinnell.csc207.texteditor;
 public class SimpleStringBuffer {
 
     private int cursor;
-    
+
     private String buffer;
 
     /**
@@ -19,6 +19,7 @@ public class SimpleStringBuffer {
 
     /**
      * insert char to the cursor
+     *
      * @param ch a character to insert
      */
     public void insert(char ch) {
@@ -33,7 +34,7 @@ public class SimpleStringBuffer {
         cursor++;
         buffer = temp;
     }
-    
+
     /**
      * delete the char at the cursor
      */
@@ -53,7 +54,8 @@ public class SimpleStringBuffer {
 
     /**
      * get the position of the cursor
-     * @return an integer which is the position of the cursor 
+     *
+     * @return an integer which is the position of the cursor
      */
     public int getCursorPosition() {
         return cursor;
@@ -67,10 +69,10 @@ public class SimpleStringBuffer {
             cursor--;
         }
     }
-    
+
     /**
      * move the cursor to the right
-         */
+     */
     public void moveRight() {
         if (cursor < buffer.length()) {
             cursor++;
@@ -79,6 +81,7 @@ public class SimpleStringBuffer {
 
     /**
      * get the length of the buffer
+     *
      * @return an integer which is the size of the buffer
      */
     public int getSize() {
@@ -87,6 +90,7 @@ public class SimpleStringBuffer {
 
     /**
      * get the char at position i
+     *
      * @param i integer represents position
      * @return character that is at i
      */
@@ -100,6 +104,7 @@ public class SimpleStringBuffer {
 
     /**
      * convert the buffer to a String
+     *
      * @return a String that is converted from buffer
      */
     public String toString() {

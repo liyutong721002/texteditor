@@ -28,19 +28,19 @@ public class GapBufferTests {
         assertEquals("ab", buffer.toString());
     }
 
-     @Test
+    @Test
     public void InsertMiddle() {
         GapBuffer buffer = new GapBuffer();
         buffer.insert('a');
         buffer.insert('b');
         buffer.insert('c');
         assertEquals(3, buffer.getSize());
-        buffer.moveLeft(); 
+        buffer.moveLeft();
         assertEquals(2, buffer.getCursorPosition());
-        buffer.insert('u'); 
+        buffer.insert('u');
         assertEquals("abuc", buffer.toString());
     }
-    
+
     @Test
     public void InsertMoreThanGap() {
         GapBuffer buffer = new GapBuffer();
@@ -60,6 +60,7 @@ public class GapBufferTests {
         buffer.insert('b');
         buffer.moveLeft();
         assertEquals(1, buffer.getCursorPosition());
+        assertEquals("ab", buffer.toString());
     }
 
     @Test
@@ -80,9 +81,9 @@ public class GapBufferTests {
         buffer.insert('a');
         buffer.insert('b');
         buffer.insert('c');
-        buffer.moveLeft(); 
+        buffer.moveLeft();
         assertEquals(2, buffer.getCursorPosition());
-        buffer.delete(); 
+        buffer.delete();
         assertEquals(1, buffer.getCursorPosition());
         assertEquals("ac", buffer.toString());
     }
@@ -147,7 +148,7 @@ public class GapBufferTests {
         GapBuffer buffer = new GapBuffer();
         buffer.insert('x');
         assertThrows(IndexOutOfBoundsException.class, () -> {
-            buffer.getChar(5);
+            buffer.getChar(1);
         });
     }
 
