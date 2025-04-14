@@ -6,13 +6,21 @@ package edu.grinnell.csc207.texteditor;
 public class SimpleStringBuffer {
 
     private int cursor;
+    
     private String buffer;
 
+    /**
+     * Construct a new StringBuffer
+     */
     public SimpleStringBuffer() {
         cursor = 0;
         buffer = "";
     }
 
+    /**
+     * insert char to the cursor
+     * @param ch a character to insert
+     */
     public void insert(char ch) {
         String temp = "";
         for (int i = 0; i < cursor; i++) {
@@ -25,7 +33,10 @@ public class SimpleStringBuffer {
         cursor++;
         buffer = temp;
     }
-
+    
+    /**
+     * delete the char at the cursor
+     */
     public void delete() {
         if (cursor > 0) {
             String temp = "";
@@ -40,26 +51,45 @@ public class SimpleStringBuffer {
         }
     }
 
+    /**
+     * get the position of the cursor
+     * @return an integer which is the position of the cursor 
+     */
     public int getCursorPosition() {
         return cursor;
     }
 
+    /**
+     * move the cursor to the left
+     */
     public void moveLeft() {
         if (cursor > 0) {
             cursor--;
         }
     }
-
+    
+    /**
+     * move the cursor to the right
+         */
     public void moveRight() {
         if (cursor < buffer.length()) {
             cursor++;
         }
     }
 
+    /**
+     * get the length of the buffer
+     * @return an integer which is the size of the buffer
+     */
     public int getSize() {
         return buffer.length();
     }
 
+    /**
+     * get the char at position i
+     * @param i integer represents position
+     * @return character that is at i
+     */
     public char getChar(int i) {
         if (i >= 0 && i < buffer.length()) {
             return buffer.charAt(i);
@@ -68,7 +98,10 @@ public class SimpleStringBuffer {
         }
     }
 
-    @Override
+    /**
+     * convert the buffer to a String
+     * @return a String that is converted from buffer
+     */
     public String toString() {
         return buffer;
     }

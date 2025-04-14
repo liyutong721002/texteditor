@@ -17,6 +17,9 @@ import java.io.IOException;
 public class TextEditor {
 
     public static void drawBuffer(GapBuffer buf, Screen screen) throws IOException {
+
+        screen.clear();
+
         int row = 0;
         int col = 0;
 
@@ -25,10 +28,10 @@ public class TextEditor {
             if (ch == '\n') {
                 row++;
                 col = 0;
-            }else if (i == buf.getCursorPosition()) {
+            } else if (i == buf.getCursorPosition()) {
                 TerminalPosition pos = new TerminalPosition(col, row);
                 screen.setCursorPosition(pos);
-            }else if (ch != '\0') {
+            } else if (ch != '\0') {
                 screen.setCharacter(col, row, TextCharacter.fromCharacter(ch)[0]);
                 col++;
             }
@@ -99,6 +102,7 @@ public class TextEditor {
                 default:
                     break;
             }
+
             drawBuffer(buffer, screen);
         }
 

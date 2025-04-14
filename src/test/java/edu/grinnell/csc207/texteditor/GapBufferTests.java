@@ -28,6 +28,19 @@ public class GapBufferTests {
         assertEquals("ab", buffer.toString());
     }
 
+     @Test
+    public void InsertMiddle() {
+        GapBuffer buffer = new GapBuffer();
+        buffer.insert('a');
+        buffer.insert('b');
+        buffer.insert('c');
+        assertEquals(3, buffer.getSize());
+        buffer.moveLeft(); 
+        assertEquals(2, buffer.getCursorPosition());
+        buffer.insert('u'); 
+        assertEquals("abuc", buffer.toString());
+    }
+    
     @Test
     public void InsertMoreThanGap() {
         GapBuffer buffer = new GapBuffer();
@@ -62,6 +75,19 @@ public class GapBufferTests {
     }
 
     @Test
+    public void DeleteMiddle() {
+        GapBuffer buffer = new GapBuffer();
+        buffer.insert('a');
+        buffer.insert('b');
+        buffer.insert('c');
+        buffer.moveLeft(); 
+        assertEquals(2, buffer.getCursorPosition());
+        buffer.delete(); 
+        assertEquals(1, buffer.getCursorPosition());
+        assertEquals("ac", buffer.toString());
+    }
+
+    @Test
     public void DeleteAll() {
         GapBuffer buffer = new GapBuffer();
         buffer.insert('a');
@@ -69,6 +95,17 @@ public class GapBufferTests {
         buffer.delete();
         buffer.delete();
         assertEquals(0, buffer.getCursorPosition());
+        assertEquals("", buffer.toString());
+    }
+
+    @Test
+    public void Delete() {
+        GapBuffer buffer = new GapBuffer();
+        buffer.insert('a');
+        buffer.insert('b');
+        buffer.delete();
+        assertEquals(1, buffer.getCursorPosition());
+        assertEquals("a", buffer.toString());
     }
 
     @Test
