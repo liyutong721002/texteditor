@@ -74,7 +74,7 @@ public class SimpleStringBuffer {
      * move the cursor to the right
      */
     public void moveRight() {
-        if (cursor < buffer.length()) {
+        if (cursor < getSize()) {
             cursor++;
         }
     }

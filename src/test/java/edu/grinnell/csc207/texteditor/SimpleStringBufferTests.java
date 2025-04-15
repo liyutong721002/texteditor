@@ -36,6 +36,7 @@ public class SimpleStringBufferTests {
         buffer.insert('b');
         buffer.moveLeft();
         assertEquals(1, buffer.getCursorPosition());
+        assertEquals("ab", buffer.toString());
     }
 
     @Test
