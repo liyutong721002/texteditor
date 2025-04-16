@@ -38,11 +38,13 @@ public class TextEditor {
             } else if (i == buf.getCursorPosition()) {
                 TerminalPosition pos = new TerminalPosition(col, row);
                 screen.setCursorPosition(pos);
-            } else if (ch != '\0') {
+            }
+            if (ch != '\0') {
                 screen.setCharacter(col, row, TextCharacter.fromCharacter(ch)[0]);
                 col++;
             }
         }
+
         if (buf.getCursorPosition() == buf.getSize()) {
             TerminalPosition pos = new TerminalPosition(col, row);
             screen.setCursorPosition(pos);
