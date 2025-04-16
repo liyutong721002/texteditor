@@ -118,7 +118,7 @@ public class GapBuffer {
         if (i < gapStart) {
             ch = buffer[i];
         } else {
-            ch = buffer[i + gapEnd - gapStart];
+            ch = buffer[i + gapEnd - gapStart + 1];
         }
         return ch;
     }

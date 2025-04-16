@@ -10,6 +10,11 @@
 
 ## Changelog
 
+
+1. The code passes all autograder tests. 
+2. Fix deleting characters and adding to the middle of the string without overwriting.
+3. Fix style errors
+
 commit 9057ab5f6fd29b22a232a140e18da6790d13b203 (HEAD -> main, origin/main)
 Author: yutong <yutong@localhost>
 Date:   Fri Feb 28 16:51:30 2025 -0600
