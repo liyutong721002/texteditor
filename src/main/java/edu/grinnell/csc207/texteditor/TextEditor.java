@@ -15,12 +15,13 @@ import java.io.IOException;
  * The driver for the TextEditor Application.
  */
 public class TextEditor {
-    
+
     /**
      * render the content of the given GapBuffer
+     *
      * @param buf the buffer tat contains all chars
      * @param screen the place where buffer is rendered
-     * @throws IOException 
+     * @throws IOException
      */
     public static void drawBuffer(GapBuffer buf, Screen screen) throws IOException {
 

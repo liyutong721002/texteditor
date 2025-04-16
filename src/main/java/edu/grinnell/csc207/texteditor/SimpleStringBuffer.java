@@ -23,31 +23,16 @@ public class SimpleStringBuffer {
      * @param ch a character to insert
      */
     public void insert(char ch) {
-        String temp = "";
-        for (int i = 0; i < cursor; i++) {
-            temp += buffer.charAt(i);
-        }
-        temp += ch;
-        for (int i = cursor + 1; i < buffer.length(); i++) {
-            temp += buffer.charAt(i);
-        }
+        buffer = buffer.substring(0, cursor) + ch + buffer.substring(cursor);
         cursor++;
-        buffer = temp;
     }
 
     /**
      * delete the char at the cursor
      */
     public void delete() {
-        if (cursor > 0) {
-            String temp = "";
-            for (int i = 0; i < cursor - 1; i++) {
-                temp += buffer.charAt(i);
-            }
-            for (int i = cursor; i < buffer.length(); i++) {
-                temp += buffer.charAt(i);
-            }
-            buffer = temp;
+        if (cursor > 0 && buffer.length() > 0) {
+            buffer = buffer.substring(0, cursor - 1) + buffer.substring(cursor);
             cursor--;
         }
     }
